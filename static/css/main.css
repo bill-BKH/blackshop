@@ -1,4 +1,12 @@
 /* Shabnam */
+.errorlist {
+    color: red;
+}
+
+.test {
+    background-color: red;
+}
+
 @font-face {
     font-family: Shabnam;
     src: url("../fonts/shabnam/Shabnam.eot");

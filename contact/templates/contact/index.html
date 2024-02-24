@@ -1,0 +1,17 @@
+{% extends 'shared/base.html' %}
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<form action="{% url 'contact:contact_page' %}" method="post">
+    {{ form }}
+    {% csrf_token %}
+    <input type="submit">
+</form>
+{% endblock %}
