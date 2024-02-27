@@ -56,7 +56,18 @@
                                     <i class="mdi mdi-account-circle-outline"></i>
                                 </div>
 
-                                    <p>{{ form.email.errors }}</pR>
+                                    <p>{{ form.email.errors }}</p>
+
+                                <div class="form-row-title">
+                                    <h3>{{ form.username.label }}</h3>
+                                </div>
+                                <div class="form-row with-icon">
+                                        {{ form.username }}
+                                        <i class="mdi mdi-account-circle-outline"></i>
+                                </div>
+                                       
+                                     <p>{{ form.username.errors   }}</p>
+                                
                                 
                                 <div class="form-row-title">
                                     <h3>رمز عبور</h3>
