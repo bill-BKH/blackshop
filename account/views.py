@@ -34,7 +34,7 @@ def register(request):
 
 def login_page(request):
     if request.method == "POST":
-        
+        pass
     return render(request, 'login.html', {'form':LoginForm})
 
 
