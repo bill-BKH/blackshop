@@ -1,11 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import User
-from .forms import RegisterForm
+from .forms import RegisterForm, LoginForm
 from django.http import HttpResponse
+from django.urls import reverse
 from django.utils.crypto import get_random_string
+from django.contrib.auth import login, logout
+
 # Create your views here.
-
-
 def register(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
@@ -16,9 +17,12 @@ def register(request):
             if not user:
                 user_pass = request.POST.get('password')
                 new_user = User(email=user_email, email_active_code=get_random_string(80),username=username)
+                new_user.is_active = False
                 new_user.set_password(user_pass)
+                # TODO: send activate code to user email
                 new_user.save()
-                form = RegisterForm()
+                # TODO: send message with this redirect
+                return redirect(reverse('account:login_page'))
             else:
                 form.add_error('username','این نام کاربری ثبت شده')
                 form.add_error('email', 'این ایمیل قبلا ثبت نام کرده است')
@@ -27,3 +31,20 @@ def register(request):
             return render(request, 'register.html', {'form': form})
 
     return render(request, 'register.html', {'form': RegisterForm})
+
+def login_page(request):
+    if request.method == "POST":
+        
+    return render(request, 'login.html', {'form':LoginForm})
+
+
+
+def activate_account(request, activate_code):
+    user = User.objects.filter(email_active_code__iexact=activate_code).first()
+    if user:
+        user.is_active = True
+        user.email_active_code = get_random_string(80)
+        user.save()
+        return redirect(reverse('account:login_page'))
+    else:
+        return redirect(reverse('account:register'))
