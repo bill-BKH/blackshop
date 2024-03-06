@@ -1,3 +1,7 @@
+{% load static    %}
+
+
+
 <!DOCTYPE html>
 <html lang="fa">
 
@@ -28,15 +32,9 @@
 
 <body>
     <div class="wrapper">
-        <form action="{% url 'account:login_page' %}" method="post">
-            {% csrf_token %}
-            {{ form }}
-            <input type="submit" name="" id="">
-        </form>
         <!-- Start main-content -->
-        {% if message %}
-            <h3>{{ message }}</h3>
-        {% endif %}
+
+
         <main class="main-content dt-sl mt-4 mb-3">
             <div class="container main-container">
                 <div class="row">
@@ -48,21 +46,39 @@
                             <div class="section-title title-wide mb-1 no-after-title-wide">
                                 <h2 class="font-weight-bold">ورود</h2>
                             </div>
-                            <form action="#">
+                            <div>
+                                {% for sms in messages    %}
+                                <div class="message">
+                                    
+                                            <div class="sms">{{ sms }}
+                                            <style>
+                                                .sms{
+                                                    text-align: center;
+                                                    color: crimson;
+                                                    padding-top: 20px;
+                                                    font-size: larger;
+                                                }
+                                            </style>
+                            
+                            
+                                            </div>
+                                    </div>
+                                {% endfor   %}
+                            </div>
+                            <form action="{url 'account:login_page'}" method="post">
+                                {% csrf_token %}
                                 <div class="form-row-title">
-                                    <h3>ایمیل یا شماره موبایل</h3>
+                                    <h3>{{ form.email.label }}</h3>
                                 </div>
                                 <div class="form-row with-icon">
-                                    <input type="text" class="input-ui pr-2"
-                                        placeholder="ایمیل یا شماره موبایل خود را وارد نمایید">
+                                    {{ form.email }}
                                     <i class="mdi mdi-account-circle-outline"></i>
                                 </div>
                                 <div class="form-row-title">
                                     <h3>رمز عبور</h3>
                                 </div>
                                 <div class="form-row with-icon">
-                                    <input type="password" class="input-ui pr-2"
-                                        placeholder="رمز عبور خود را وارد نمایید">
+                                   {{ form.password}}
                                     <i class="mdi mdi-lock-open-variant-outline"></i>
                                 </div>
                                 <div class="form-row mt-2">
