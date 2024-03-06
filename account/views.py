@@ -1,10 +1,16 @@
 from django.shortcuts import render, redirect
 from .models import User
 from .forms import RegisterForm, LoginForm
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from django.urls import reverse
 from django.utils.crypto import get_random_string
 from django.contrib.auth import login, logout
+from django.contrib import messages
+from django.conf import settings
+from django.core.mail import send_mail
+
+
+
 
 # Create your views here.
 def register(request):
@@ -19,10 +25,9 @@ def register(request):
                 new_user = User(email=user_email, email_active_code=get_random_string(80),username=username)
                 new_user.is_active = False
                 new_user.set_password(user_pass)
-                # TODO: send activate code to user email
                 new_user.save()
-                # TODO: send message with this redirect
-                return redirect(reverse('account:login_page'))
+                messages.success(request,"به حساب خود ورود کنید")
+                return redirect('account:login_page')
             else:
                 form.add_error('username','این نام کاربری ثبت شده')
                 form.add_error('email', 'این ایمیل قبلا ثبت نام کرده است')
@@ -48,3 +53,18 @@ def activate_account(request, activate_code):
         return redirect(reverse('account:login_page'))
     else:
         return redirect(reverse('account:register'))
+
+
+
+def send_email_client():
+    subject = "this is a test "
+    message = "helllo"
+    from_email = settings.EMAIL_HOST_USER
+    recipient_list = []
+    send_mail(subject,message,from_email,recipient_list,fail_silently=False)
+
+
+
+def send_email(request):
+      send_email_client()
+      return redirect(request,'account:login_page')
