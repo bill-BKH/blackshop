@@ -126,8 +126,8 @@ EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_SSL = True
 EMAIL_USE_TLS = False
 EMAIL_PORT = 465
-EMAIL_HOST_USER = os.environ('DJANGO_EMAIL')
-EMAIL_HOST_PASSWORD = os.environ('DJANGO_EMAIL_PASSWORD')
+EMAIL_HOST_USER = os.environ.get('DJANGO_EMAIL')
+EMAIL_HOST_PASSWORD = os.environ.get('DJANGO_EMAIL_PASSWORD')
 
 
 # Static files (CSS, JavaScript, Images)

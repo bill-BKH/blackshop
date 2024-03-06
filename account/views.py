@@ -9,37 +9,53 @@ from django.contrib import messages
 from django.conf import settings
 from django.core.mail import send_mail
 
-
-
-
 # Create your views here.
 def register(request):
-    if request.method == 'POST':
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            user_email = request.POST.get('email')
-            username = request.POST.get('username')
-            user = User.objects.filter(email__iexact=user_email,username__iexact=username).exists()
-            if not user:
-                user_pass = request.POST.get('password')
-                new_user = User(email=user_email, email_active_code=get_random_string(80),username=username)
-                new_user.is_active = False
-                new_user.set_password(user_pass)
-                new_user.save()
-                messages.success(request,"به حساب خود ورود کنید")
-                return redirect('account:login_page')
+    if not request.user.is_authenticated:
+        if request.method == 'POST':
+            form = RegisterForm(request.POST)
+            if form.is_valid():
+                user_email = request.POST.get('email')
+                username = request.POST.get('username')
+                user = User.objects.filter(email__iexact=user_email,username__iexact=username).exists()
+                if not user:
+                    user_pass = request.POST.get('password')
+                    new_user = User(email=user_email, email_active_code=get_random_string(80),username=username)
+                    new_user.is_active = False
+                    new_user.set_password(user_pass)
+                    new_user.save()
+                    messages.success(request,"به حساب خود ورود کنید")
+                    return redirect('account:login_page')
+                else:
+                    form.add_error('username','این نام کاربری ثبت شده')
+                    form.add_error('email', 'این ایمیل قبلا ثبت نام کرده است')
+                    return render(request, 'register.html', {'form': form})
             else:
-                form.add_error('username','این نام کاربری ثبت شده')
-                form.add_error('email', 'این ایمیل قبلا ثبت نام کرده است')
                 return render(request, 'register.html', {'form': form})
-        else:
-            return render(request, 'register.html', {'form': form})
-
-    return render(request, 'register.html', {'form': RegisterForm})
+        return render(request, 'register.html', {'form': RegisterForm})
+    else:
+        return redirect(reverse('shop:index'))
 
 def login_page(request):
     if request.method == "POST":
-        pass
+        user_email = request.POST.get('email')
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            user = User.objects.filter(email__iexact=user_email).first()
+            if user:
+                if user.is_active == True:
+                    user_pass = request.POST.get('password')
+                    password_is_correct = user.check_password(user_pass)
+                    if password_is_correct:
+                        login(request, user)
+                        return redirect(reverse('shop:index'))
+                    else:
+                        form.add_error('email', 'ایمیل یا پسورد شما اشتباه است')
+                        return render(request, 'login.html', {'form':form})
+        else:
+            form.add_error('email', 'ایمیل یا پسورد شما اشتباه است')
+            return render(request, 'login.html', {'form':form})
+            
     return render(request, 'login.html', {'form':LoginForm})
 
 
@@ -56,15 +72,19 @@ def activate_account(request, activate_code):
 
 
 
-def send_email_client():
-    subject = "this is a test "
-    message = "helllo"
-    from_email = settings.EMAIL_HOST_USER
-    recipient_list = []
-    send_mail(subject,message,from_email,recipient_list,fail_silently=False)
+def logout_page(request):
+    logout(request)
+    return redirect(reverse('account:login_page'))
+
+# def send_email_client():
+#     subject = "this is a test "
+#     message = "helllo"
+#     from_email = settings.EMAIL_HOST_USER
+#     recipient_list = []
+#     send_mail(subject,message,from_email,recipient_list,fail_silently=False)
 
 
 
-def send_email(request):
-      send_email_client()
-      return redirect(request,'account:login_page')
+# def send_email(request):
+#       send_email_client()
+#       return redirect(request,'account:login_page')

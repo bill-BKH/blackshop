@@ -47,25 +47,8 @@
                                 <h2 class="font-weight-bold">ورود</h2>
                             </div>
                             <div>
-                                {% for sms in messages    %}
-                                <div class="message">
-                                    
-                                            <div class="sms">{{ sms }}
-                                            <style>
-                                                .sms{
-                                                    text-align: center;
-                                                    color: crimson;
-                                                    padding-top: 20px;
-                                                    font-size: larger;
-                                                }
-                                            </style>
-                            
-                            
-                                            </div>
-                                    </div>
-                                {% endfor   %}
                             </div>
-                            <form action="{url 'account:login_page'}" method="post">
+                            <form action="{% url 'account:login_page' %}" method="post">
                                 {% csrf_token %}
                                 <div class="form-row-title">
                                     <h3>{{ form.email.label }}</h3>
@@ -81,6 +64,7 @@
                                    {{ form.password}}
                                     <i class="mdi mdi-lock-open-variant-outline"></i>
                                 </div>
+                                {{form.email.errors}}
                                 <div class="form-row mt-2">
                                     <div class="custom-control custom-checkbox float-right mt-2">
                                         <input type="checkbox" class="custom-control-input" id="customCheck3">
@@ -90,10 +74,10 @@
                                     </div>
                                 </div>
                                 <div class="form-row mt-3">
-                                    <button class="btn-primary-cm btn-with-icon mx-auto w-100">
-                                        <i class="mdi mdi-login-variant"></i>
+                                    <a href="#"><button class="btn-primary-cm btn-with-icon mx-auto w-100 " type="submit">
                                         ورود به دیدیکالا
                                     </button>
+                                   </a> 
                                 </div>
                             </form>
                             <div class="form-footer mt-3">
