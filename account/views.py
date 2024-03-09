@@ -75,16 +75,3 @@ def activate_account(request, activate_code):
 def logout_page(request):
     logout(request)
     return redirect(reverse('account:login_page'))
-
-# def send_email_client():
-#     subject = "this is a test "
-#     message = "helllo"
-#     from_email = settings.EMAIL_HOST_USER
-#     recipient_list = []
-#     send_mail(subject,message,from_email,recipient_list,fail_silently=False)
-
-
-
-# def send_email(request):
-#       send_email_client()
-#       return redirect(request,'account:login_page')

@@ -1,0 +1,50 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{%  for p in products  %}
+    <h1>{{p.title}}</h1>
+
+
+
+    <div class="item">
+        <div class="product-card">
+            <div class="product-head">
+                <div class="rating-stars">
+                    <i class="mdi mdi-star active"></i>
+                    <i class="mdi mdi-star active"></i>
+                    <i class="mdi mdi-star active"></i>
+                    <i class="mdi mdi-star active"></i>
+                    <i class="mdi mdi-star active"></i>
+                </div>
+            </div>
+            <a class="product-thumb" href="shop-single.html">
+                {% if p.picture %}
+                <img width="100" src="{{ p.picture.url }}" alt="Product Thumbnail">
+                {% endif %}
+            </a>
+            <div class="product-card-body">
+                <h5 class="product-title">
+                    <a href="shop-single.html">{{p.title}}</a>
+                </h5>
+                <a class="product-meta" href="shop-categories.html">لباس زنانه</a>
+                <span class="product-price">157,000 تومان</span>
+            </div>
+        </div>
+    </div>
+{%endfor%}    
+{% endblock %}
