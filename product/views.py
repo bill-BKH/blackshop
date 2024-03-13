@@ -5,6 +5,9 @@ from .models import Product
 # Create your views here.
 def product(request):
     products= Product.objects.all()
-    print (products)
+    return render(request,'product/main.html',{'products':products})
 
-    return render(request,'product/index.html',{'products':products})
+def single(request):
+    products= Product.objects.all()
+    return render(request,'product/single.html',{'products':products})
+

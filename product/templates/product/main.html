@@ -1,0 +1,126 @@
+{% extends 'shared/base.html' %}
+{% block content %}
+
+{% for p in products   %}
+        <main class="main-content dt-sl mb-3">
+            <div class="container main-container">
+                <!-- Start Main-Slider -->
+                <div class="row mb-3">
+                                <!-- Start Product-Slider -->
+                                <div class="col-12 px-res-0">
+                                    <div class="product-carousel carousel-md owl-carousel owl-theme">
+                                        <div class="item">
+                                            <div class="product-card">
+                                                <div class="product-head">
+                                                    <div class="rating-stars">
+                                                        <i class="mdi mdi-star active"></i>
+                                                        <i class="mdi mdi-star active"></i>
+                                                        <i class="mdi mdi-star active"></i>
+                                                        <i class="mdi mdi-star active"></i>
+                                                        <i class="mdi mdi-star active"></i>
+                                                    </div>
+                                                    <div class="discount">
+                                                        <span>20%</span>
+                                                    </div>
+                                                </div>
+                                                <a class="product-thumb" href="{% url 'product:single'    %}">
+                                                    <img src="{{ p. .url }}" alt="Product Thumbnail">
+                                                </a>
+                                                <div class="product-card-body">
+                                                    <h5 class="product-title">
+                                                        <a href="shop-single.html">{{p.title}}</a>
+                                                    </h5>
+                                                    <a class="product-meta" href="{% url 'product:single'    %}">{{p.short_description}}</a>
+                                                    <span class="product-price">{{p.price}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="product-card">
+                                                <div class="product-head">
+                                                    <div class="rating-stars">
+                                                        <i class="mdi mdi-star active"></i>
+                                                        <i class="mdi mdi-star active"></i>
+                                                        <i class="mdi mdi-star active"></i>
+                                                        <i class="mdi mdi-star active"></i>
+                                                        <i class="mdi mdi-star active"></i>
+                                                    </div>
+                                                    <div class="discount">
+                                                        <span>20%</span>
+                                                    </div>
+                                                </div>
+                                                <a class="product-thumb" href="{% url 'product:single'    %}">
+                                                    <img src="{{ p.picture.url }}" alt="Product Thumbnail">
+                                                </a>
+                                                <div class="product-card-body">
+                                                    <h5 class="product-title">
+                                                        <a href="shop-single.html">{{p.title}}</a>
+                                                    </h5>
+                                                    <a class="product-meta" href="{% url 'product:single'    %}">{{p.short_description}}</a>
+                                                    <span class="product-price">{{p.price}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="product-card">
+                                                <div class="product-head">
+                                                    <div class="rating-stars">
+                                                        <i class="mdi mdi-star active"></i>
+                                                        <i class="mdi mdi-star active"></i>
+                                                        <i class="mdi mdi-star active"></i>
+                                                        <i class="mdi mdi-star active"></i>
+                                                        <i class="mdi mdi-star active"></i>
+                                                    </div>
+                                                    <div class="discount">
+                                                        <span>20%</span>
+                                                    </div>
+                                                </div>
+                                                <a class="product-thumb" href="{% url 'product:single'    %}">
+                                                    <img src="{{ p.picture.url }}" alt="Product Thumbnail">
+                                                </a>
+                                                <div class="product-card-body">
+                                                    <h5 class="product-title">
+                                                        <a href="shop-single.html">{{p.title}}</a>
+                                                    </h5>
+                                                    <a class="product-meta" href="{% url 'product:single'    %}">{{p.short_description}}</a>
+                                                    <span class="product-price">{{p.price}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="product-card">
+                                                <div class="product-head">
+                                                    <div class="rating-stars">
+                                                        <i class="mdi mdi-star active"></i>
+                                                        <i class="mdi mdi-star active"></i>
+                                                        <i class="mdi mdi-star active"></i>
+                                                        <i class="mdi mdi-star active"></i>
+                                                        <i class="mdi mdi-star active"></i>
+                                                    </div>
+                                                    <div class="discount">
+                                                        <span>20%</span>
+                                                    </div>
+                                                </div>
+                                                <a class="product-thumb" href="{% url 'product:single'    %}">
+                                                    <img src="{{ p.picture.url }}" alt="Product Thumbnail">
+                                                </a>
+                                                <div class="product-card-body">
+                                                    <h5 class="product-title">
+                                                        <a href="shop-single.html">{{p.title}}</a>
+                                                    </h5>
+                                                    <a class="product-meta" href="{% url 'product:single'    %}">{{p.short_description}}</a>
+                                                    <span class="product-price">{{p.price}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                <!-- End Product-Slider -->
+
+                            </div>
+                        </section>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+
+{% endfor   %}
+{%endblock content%}
