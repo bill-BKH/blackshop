@@ -7,7 +7,8 @@ def product(request):
     products= Product.objects.all()
     return render(request,'product/main.html',{'products':products})
 
-def single(request):
-    products= Product.objects.all()
-    return render(request,'product/single.html',{'products':products})
+def single(request,slug):
+    product = Product.objects.get(slug=slug)
+    
+    return render(request,'product/single.html',{'product':product})
 

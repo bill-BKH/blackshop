@@ -1,4 +1,24 @@
 {% extends 'shared/base.html' %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
 {% block content %}
 
 {% for p in products   %}
@@ -23,100 +43,23 @@
                                                         <span>20%</span>
                                                     </div>
                                                 </div>
-                                                <a class="product-thumb" href="{% url 'product:single'    %}">
-                                                    <img src="{{ p. .url }}" alt="Product Thumbnail">
-                                                </a>
-                                                <div class="product-card-body">
-                                                    <h5 class="product-title">
-                                                        <a href="shop-single.html">{{p.title}}</a>
-                                                    </h5>
-                                                    <a class="product-meta" href="{% url 'product:single'    %}">{{p.short_description}}</a>
-                                                    <span class="product-price">{{p.price}}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="product-card">
-                                                <div class="product-head">
-                                                    <div class="rating-stars">
-                                                        <i class="mdi mdi-star active"></i>
-                                                        <i class="mdi mdi-star active"></i>
-                                                        <i class="mdi mdi-star active"></i>
-                                                        <i class="mdi mdi-star active"></i>
-                                                        <i class="mdi mdi-star active"></i>
-                                                    </div>
-                                                    <div class="discount">
-                                                        <span>20%</span>
-                                                    </div>
-                                                </div>
-                                                <a class="product-thumb" href="{% url 'product:single'    %}">
+                                                <a class="product-thumb" href="{% url 'product:single' slug=p.slug %}">
                                                     <img src="{{ p.picture.url }}" alt="Product Thumbnail">
                                                 </a>
                                                 <div class="product-card-body">
                                                     <h5 class="product-title">
                                                         <a href="shop-single.html">{{p.title}}</a>
                                                     </h5>
-                                                    <a class="product-meta" href="{% url 'product:single'    %}">{{p.short_description}}</a>
+                                                    <h5>{{p.short_description}}</h5>
                                                     <span class="product-price">{{p.price}}</span>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="item">
-                                            <div class="product-card">
-                                                <div class="product-head">
-                                                    <div class="rating-stars">
-                                                        <i class="mdi mdi-star active"></i>
-                                                        <i class="mdi mdi-star active"></i>
-                                                        <i class="mdi mdi-star active"></i>
-                                                        <i class="mdi mdi-star active"></i>
-                                                        <i class="mdi mdi-star active"></i>
-                                                    </div>
-                                                    <div class="discount">
-                                                        <span>20%</span>
-                                                    </div>
-                                                </div>
-                                                <a class="product-thumb" href="{% url 'product:single'    %}">
-                                                    <img src="{{ p.picture.url }}" alt="Product Thumbnail">
-                                                </a>
-                                                <div class="product-card-body">
-                                                    <h5 class="product-title">
-                                                        <a href="shop-single.html">{{p.title}}</a>
-                                                    </h5>
-                                                    <a class="product-meta" href="{% url 'product:single'    %}">{{p.short_description}}</a>
-                                                    <span class="product-price">{{p.price}}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="product-card">
-                                                <div class="product-head">
-                                                    <div class="rating-stars">
-                                                        <i class="mdi mdi-star active"></i>
-                                                        <i class="mdi mdi-star active"></i>
-                                                        <i class="mdi mdi-star active"></i>
-                                                        <i class="mdi mdi-star active"></i>
-                                                        <i class="mdi mdi-star active"></i>
-                                                    </div>
-                                                    <div class="discount">
-                                                        <span>20%</span>
-                                                    </div>
-                                                </div>
-                                                <a class="product-thumb" href="{% url 'product:single'    %}">
-                                                    <img src="{{ p.picture.url }}" alt="Product Thumbnail">
-                                                </a>
-                                                <div class="product-card-body">
-                                                    <h5 class="product-title">
-                                                        <a href="shop-single.html">{{p.title}}</a>
-                                                    </h5>
-                                                    <a class="product-meta" href="{% url 'product:single'    %}">{{p.short_description}}</a>
-                                                    <span class="product-price">{{p.price}}</span>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    
                                 <!-- End Product-Slider -->
 
                             </div>
-                        </section>
+
                     </div>
                         </div>
                     </div>
