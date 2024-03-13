@@ -1,0 +1,99 @@
+{% extends 'shared/base.html' %}
+{% block content %}
+{%load static  %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    <body>
+    {% for x in products   %}  
+        <div class="wrapper">
+            <!-- Start header -->
+            <header class="main-header">
+                <!-- Start ads -->
+                <div class="ads-header-wrapper">
+                    <a href="#" class="ads-header hidden-sm" target="_blank"
+                        style="background-image: url(./assets/img/banner/large-ads.jpg)"></a>
+                </div>
+                <!-- End ads -->
+                <!-- Start topbar -->
+                <div class="container main-container">
+                            <div class="col-md-4 col-6 topbar-left">
+            
+            </header>
+            <!-- End header -->
+            <!-- Start main-content -->
+            <main class="main-content dt-sl mb-3">
+                <div class="container main-container">
+                    <!-- Start title - breadcrumb -->
+                    <div class="title-breadcrumb-special dt-sl mb-3">
+                        <div class="breadcrumb dt-sl">
+                            <nav>
+                                <a href="#">{{x.category}}</a>
+                                <a href="#">{{x.title}}</a>
+                                <a href="#">{{x.short_description}}</a>
+                            </nav>
+                        </div>
+                    </div>
+                    <!-- End title - breadcrumb -->
+                    <!-- Start Product -->
+                    <div class="dt-sn mb-5 dt-sl">
+                        <div class="row">
+                            <!-- Product Gallery-->
+                            <div class="col-lg-4 col-md-6 ps-relative">
+                                <!-- Product Options-->
+                                <ul class="gallery-options">
+                                    <li>
+                                        <button class="add-favorites"><i class="mdi mdi-heart"></i></button>
+                                        <span class="tooltip-option">افزودن به علاقمندی</span>
+                                    </li>
+                                </ul>
+                                <div class="product-timeout position-relative pt-5 mb-3">
+                                </div>
+                                <div class="product-gallery">
+                                    
+                                    <div class="product-carousel owl-carousel" data-slider-id="1">
+                                        <div class="item">
+                                            <a class="gallery-item" >
+                                                <img src="{{ x.picture.url }}" alt="Product">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center flex-wrap">
+                                        <ul class="product-thumbnails owl-thumbs ml-2" data-slider-id="1">
+                                            <li class="owl-thumb-item active">
+                                            </li>
+                                        </ul>
+                                        <ul class="product-thumbnails">
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product Info -->
+                            <div class="col-lg-8 col-md-6 py-2">
+                                <div class="product-info dt-sl">
+                                    <div class="product-title dt-sl">
+                                        <h3>{{x.short_description}}</h3>
+                                    </div>
+                                    </div>
+                                    <div class="product-params dt-sl">
+                                    </div>
+                                    <div class="section-title text-sm-title title-wide no-after-title-wide mb-0 dt-sl">
+                                        <h2>قیمت : <span class="price">{{x.price}}</span> </h2>
+                                    </div>
+                                    <div class="dt-sl mt-4">
+                                        <a href="#" class="btn-primary-cm btn-with-icon">
+                                            <img src="{% static './assets/img/theme/shopping-cart.png' %}" alt="">
+                                            افزودن به سبد خرید
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+{% endfor  %}
+</body>
+{% endblock content%}
